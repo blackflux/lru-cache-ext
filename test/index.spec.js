@@ -1,8 +1,36 @@
+const crypto = require('crypto');
 const expect = require('chai').expect;
-const index = require('../src/index');
+const LRU = require('../src/index');
 
-describe('Testing Package', () => {
-  it('Testing Addition', () => {
-    expect(index(7, 9)).to.equal(16);
+
+describe('Testing memoize', () => {
+  const error = new Error();
+  const key = crypto.randomBytes(8).toString('hex');
+  const value = crypto.randomBytes(8).toString('hex');
+
+  const valueFn = () => value;
+  const valueFnError = async () => { throw error; };
+
+  let cache;
+  beforeEach(() => {
+    cache = new LRU({ maxAge: 5 * 60 * 1000 });
+  });
+
+  it('Testing basic caching behaviour', async () => {
+    expect(cache.peek(key)).to.equal(undefined);
+    expect(await cache.memoize(key, valueFn)).to.equal(value);
+    expect(cache.peek(key)).to.equal(value);
+    expect(await cache.memoize(key, valueFnError)).to.equal(value);
+    expect(cache.peek(key)).to.equal(value);
+  });
+
+  it('Testing async error re-empties cache', async () => {
+    expect(cache.peek(key)).to.equal(undefined);
+    try {
+      await cache.memoize(key, valueFnError);
+    } catch (e) {
+      expect(e).to.equal(error);
+    }
+    expect(cache.peek(key)).to.equal(undefined);
   });
 });

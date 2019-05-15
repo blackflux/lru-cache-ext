@@ -17,7 +17,14 @@
     "type": "git",
     "url": "https://github.com/blackflux/lru-cache-ext.git"
   },
-  "keywords": [],
+  "keywords": [
+    "memoize",
+    "memoise",
+    "memoization",
+    "memoisation",
+    "lru",
+    "cache"
+  ],
   "author": "Lukas Siemon",
   "license": "MIT",
   "bugs": {
@@ -36,8 +43,12 @@
     "coveralls": "3.0.3",
     "eslint": "5.16.0",
     "js-gardener": "2.0.30",
+    "lru-cache": "5.1.1",
     "nyc": "14.1.1",
     "semantic-release": "15.13.12"
+  },
+  "peerDependencies": {
+    "lru-cache": "^5.1.1"
   },
   "licenses": [
     {
