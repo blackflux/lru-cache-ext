@@ -31,6 +31,16 @@ Only when the key is not present in cache (or has expired), `valueFn` is called 
 
 The cached value is returned when it becomes available (important in the case where `valueFn` is async).
 
-The cache is left empty if an error is thrown at any point in `valueFn`.
+The cache is left empty if an error is thrown at any point in `valueFn` (even asynchronous).
 
 Useful when multiple async operation need to access the same async information.
+
+### memoizeSync(key: String, valueFn: function)
+
+Similar to "memoize", when key is not present (or has expired), `valueFn` is called and placed into the cache.
+
+Cached value is returned from the function.
+
+`valueFn` can be a synchronous or asynchronous function.
+
+If `valueFn` is an asynchronous function and an error is thrown asynchronously, the cache is not invalidated.
