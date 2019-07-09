@@ -34,3 +34,13 @@ The cached value is returned when it becomes available (important in the case wh
 The cache is left empty if an error is thrown at any point in `valueFn`.
 
 Useful when multiple async operation need to access the same async information.
+
+### memoizeSync(key: String, valueFn: function)
+
+Similar to "memoize", when key is not present (or has expired), `valueFn` is called and placed into the cache.
+
+Cached value is returned when it becomes available.
+
+`valueFn` only supports Synchronous functions.
+
+The cache is NOT left empty if an error is thrown at any point in `valueFn`.
