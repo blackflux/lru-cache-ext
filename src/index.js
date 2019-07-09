@@ -14,6 +14,14 @@ class LRUe extends LRU {
       throw error;
     }
   }
+
+  memoizeSync(key, valueFn) {
+    assert(typeof valueFn === 'function');
+    if (!this.has(key)) {
+      this.set(key, valueFn());
+    }
+    return this.peek(key);
+  }
 }
 
 module.exports = LRUe;
