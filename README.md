@@ -41,6 +41,6 @@ Similar to "memoize", when key is not present (or has expired), `valueFn` is cal
 
 Cached value is returned when it becomes available.
 
-`valueFn` only supports Synchronous functions.
+`valueFn` supports Synchronous and Asynchronous functions.
 
-The cache is NOT left empty if an error is thrown at any point in `valueFn`.
+The cache is left empty if an error is thrown in a Synchronous `valueFn`.

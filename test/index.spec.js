@@ -10,6 +10,7 @@ describe('Testing LRUe', () => {
 
   const valueFn = () => value;
   const valueFnError = async () => { throw error; };
+  const valueFnSyncError = () => { throw error; };
 
   let cache;
   beforeEach(() => {
@@ -42,6 +43,16 @@ describe('Testing LRUe', () => {
       expect(cache.memoizeSync(key, valueFn)).to.equal(value);
       expect(cache.peek(key)).to.equal(value);
       expect(cache.memoizeSync(key, valueFn)).to.equal(value);
+    });
+
+    it('Testing basic sync error behavior', () => {
+      expect(cache.peek(key)).to.equal(undefined);
+      try {
+        cache.memoizeSync(key, valueFnSyncError);
+      } catch (e) {
+        expect(e).to.equal(error);
+      }
+      expect(cache.peek(key)).to.equal(undefined);
     });
   });
 });
