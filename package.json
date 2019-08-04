@@ -33,15 +33,17 @@
   ],
   "author": "Lukas Siemon",
   "license": "MIT",
-  "bugs": {"url": "https://github.com/blackflux/lru-cache-ext/issues"},
+  "bugs": {
+    "url": "https://github.com/blackflux/lru-cache-ext/issues"
+  },
   "homepage": "https://github.com/blackflux/lru-cache-ext#readme",
   "devDependencies": {
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "7.5.5",
     "@babel/register": "7.5.5",
-    "@blackflux/eslint-plugin-rules": "1.0.26",
-    "@blackflux/robo-config-plugin": "2.2.3",
+    "@blackflux/eslint-plugin-rules": "1.1.0",
+    "@blackflux/robo-config-plugin": "2.3.0",
     "babel-eslint": "10.0.2",
     "chai": "4.2.0",
     "coveralls": "3.0.5",
@@ -51,17 +53,28 @@
     "nyc": "14.1.1",
     "semantic-release": "15.13.19"
   },
-  "peerDependencies": {"lru-cache": "^5.1.1"},
+  "peerDependencies": {
+    "lru-cache": "^5.1.1"
+  },
   "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/blackflux/lru-cache-ext/blob/master/LICENSE"
     }
   ],
-  "engines": {"node": ">= 8.10"},
-  "files": ["lib"],
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "files": [
+    "lib"
+  ],
   "nyc": {
-    "exclude": ["gardener.js", "node_modules/*", "coverage/*", "lib/*"],
+    "exclude": [
+      "gardener.js",
+      "node_modules/*",
+      "coverage/*",
+      "lib/*"
+    ],
     "all": true,
     "babel": true,
     "branches": 100,
@@ -69,12 +82,19 @@
     "check-coverage": true,
     "extension": [],
     "functions": 100,
-    "include": ["**/*.js"],
+    "include": [
+      "**/*.js"
+    ],
     "lines": 100,
     "per-file": false,
     "report-dir": "./coverage",
-    "reporter": ["lcov", "text-summary"],
-    "require": ["@babel/register"],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "@babel/register"
+    ],
     "statements": 100,
     "tempDir": "./coverage/.nyc_output"
   }
