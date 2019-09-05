@@ -1,16 +1,25 @@
 const crypto = require('crypto');
 const expect = require('chai').expect;
+const { describe } = require('node-tdd');
 const LRU = require('../src/index');
 
 
 describe('Testing LRUe', () => {
-  const error = new Error();
-  const key = crypto.randomBytes(8).toString('hex');
-  const value = crypto.randomBytes(8).toString('hex');
+  let error;
+  let key;
+  let value;
+  let valueFn;
+  let valueFnError;
+  let valueFnSyncError;
 
-  const valueFn = () => value;
-  const valueFnError = async () => { throw error; };
-  const valueFnSyncError = () => { throw error; };
+  before(() => {
+    error = new Error();
+    key = crypto.randomBytes(8).toString('hex');
+    value = crypto.randomBytes(8).toString('hex');
+    valueFn = () => value;
+    valueFnError = async () => { throw error; };
+    valueFnSyncError = () => { throw error; };
+  });
 
   let cache;
   beforeEach(() => {
