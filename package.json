@@ -57,7 +57,7 @@
     "lru-cache": "5.1.1",
     "node-tdd": "2.5.16",
     "nyc": "14.1.1",
-    "semantic-release": "15.13.24"
+    "semantic-release": "15.13.27"
   },
   "peerDependencies": {
     "lru-cache": "^5.1.1"
