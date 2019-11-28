@@ -55,7 +55,7 @@
     "eslint-plugin-mocha": "6.2.2",
     "js-gardener": "2.0.115",
     "lru-cache": "5.1.1",
-    "node-tdd": "2.5.19",
+    "node-tdd": "2.5.20",
     "nyc": "14.1.1",
     "semantic-release": "15.13.31"
   },
