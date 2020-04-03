@@ -56,7 +56,7 @@
     "js-gardener": "2.0.148",
     "lru-cache": "5.1.1",
     "node-tdd": "2.10.4",
-    "nyc": "15.0.0",
+    "nyc": "15.0.1",
     "semantic-release": "17.0.4"
   },
   "peerDependencies": {
