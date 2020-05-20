@@ -54,13 +54,9 @@
     "eslint-plugin-markdown": "1.0.2",
     "eslint-plugin-mocha": "7.0.0",
     "js-gardener": "2.0.155",
-    "lru-cache": "5.1.1",
     "node-tdd": "2.11.1",
     "nyc": "15.0.1",
     "semantic-release": "17.0.7"
-  },
-  "peerDependencies": {
-    "lru-cache": "^5.1.1"
   },
   "licenses": [
     {
@@ -103,5 +99,8 @@
     ],
     "statements": 100,
     "tempDir": "./coverage/.nyc_output"
+  },
+  "dependencies": {
+    "lru-cache": "5.1.1"
   }
 }
