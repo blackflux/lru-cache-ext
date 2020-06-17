@@ -3,7 +3,6 @@ const expect = require('chai').expect;
 const { describe } = require('node-tdd');
 const LRU = require('../src/index');
 
-
 describe('Testing LRUe', () => {
   let error;
   let key;
