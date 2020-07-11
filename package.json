@@ -101,6 +101,6 @@
     "tempDir": "./coverage/.nyc_output"
   },
   "dependencies": {
-    "lru-cache": "5.1.1"
+    "lru-cache": "6.0.0"
   }
 }
