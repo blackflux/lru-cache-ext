@@ -21,9 +21,16 @@ Install with [npm](https://www.npmjs.com/):
 
 Please refer to [lru-cache](https://www.npmjs.com/package/lru-cache).
 
-## Additions
+## Additional Options
 
-Some additional, non-invasive functionality is added. 
+### cacheNull
+
+Type: `boolean`<br>
+Default: `true`
+
+When set to `false` the `null` value is not cached with `memoize` and `memoizeAsync`.
+
+## Additional Functions
 
 ### memoize(key: String, valueFn: function)
 
