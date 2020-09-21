@@ -2,9 +2,9 @@ const assert = require('assert');
 const LRU = require('lru-cache');
 
 class LRUe extends LRU {
-  constructor({ cacheNull, ...options }) {
+  constructor({ cacheNull = true, ...options }) {
     super(options);
-    this.cacheNull = cacheNull === true;
+    this.cacheNull = cacheNull;
   }
 
   async memoize(key, valueFn) {

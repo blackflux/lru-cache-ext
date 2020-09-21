@@ -50,11 +50,18 @@ describe('Testing LRUe', () => {
       expect(cache.peek(key)).to.equal(undefined);
     });
 
-    it('Testing null not cached', async () => {
+    it('Testing null cached', async () => {
       expect(cache.peek(key)).to.equal(undefined);
       const r = await cache.memoize(key, valueFnNull);
       expect(r).to.equal(null);
-      expect(cache.peek(key)).to.equal(undefined);
+      expect(await cache.peek(key)).to.equal(null);
+    });
+
+    it('Testing null not cached', async () => {
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
+      const r = await cacheNoNull.memoize(key, valueFnNull);
+      expect(r).to.equal(null);
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
     });
   });
 
@@ -76,11 +83,18 @@ describe('Testing LRUe', () => {
       expect(cache.peek(key)).to.equal(undefined);
     });
 
-    it('Testing null not cached', async () => {
+    it('Testing null cached', async () => {
       expect(cache.peek(key)).to.equal(undefined);
       const r = cache.memoizeSync(key, valueFnSyncNull);
       expect(r).to.equal(null);
-      expect(cache.peek(key)).to.equal(undefined);
+      expect(cache.peek(key)).to.equal(null);
+    });
+
+    it('Testing null not cached', async () => {
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
+      const r = cacheNoNull.memoizeSync(key, valueFnSyncNull);
+      expect(r).to.equal(null);
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
     });
   });
 });
