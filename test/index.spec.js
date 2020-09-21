@@ -10,6 +10,8 @@ describe('Testing LRUe', () => {
   let valueFn;
   let valueFnError;
   let valueFnSyncError;
+  let valueFnNull;
+  let valueFnSyncNull;
 
   before(() => {
     error = new Error();
@@ -18,11 +20,15 @@ describe('Testing LRUe', () => {
     valueFn = () => value;
     valueFnError = async () => { throw error; };
     valueFnSyncError = () => { throw error; };
+    valueFnNull = async () => null;
+    valueFnSyncNull = () => null;
   });
 
   let cache;
+  let cacheNoNull;
   beforeEach(() => {
     cache = new LRU({ maxAge: 5 * 60 * 1000 });
+    cacheNoNull = new LRU({ maxAge: 5 * 60 * 1000, cacheNull: false });
   });
 
   describe('Testing memoize', () => {
@@ -43,6 +49,20 @@ describe('Testing LRUe', () => {
       }
       expect(cache.peek(key)).to.equal(undefined);
     });
+
+    it('Testing null cached', async () => {
+      expect(cache.peek(key)).to.equal(undefined);
+      const r = await cache.memoize(key, valueFnNull);
+      expect(r).to.equal(null);
+      expect(await cache.peek(key)).to.equal(null);
+    });
+
+    it('Testing null not cached', async () => {
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
+      const r = await cacheNoNull.memoize(key, valueFnNull);
+      expect(r).to.equal(null);
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
+    });
   });
 
   describe('Testing memoizeSync', () => {
@@ -61,6 +81,20 @@ describe('Testing LRUe', () => {
         expect(e).to.equal(error);
       }
       expect(cache.peek(key)).to.equal(undefined);
+    });
+
+    it('Testing null cached', async () => {
+      expect(cache.peek(key)).to.equal(undefined);
+      const r = cache.memoizeSync(key, valueFnSyncNull);
+      expect(r).to.equal(null);
+      expect(cache.peek(key)).to.equal(null);
+    });
+
+    it('Testing null not cached', async () => {
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
+      const r = cacheNoNull.memoizeSync(key, valueFnSyncNull);
+      expect(r).to.equal(null);
+      expect(cacheNoNull.peek(key)).to.equal(undefined);
     });
   });
 });
