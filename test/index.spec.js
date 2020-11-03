@@ -96,5 +96,10 @@ describe('Testing LRUe', () => {
       expect(r).to.equal(null);
       expect(cacheNoNull.peek(key)).to.equal(undefined);
     });
+
+    it('Testing error if async', async ({ capture }) => {
+      const err = await capture(() => cache.memoizeSync(key, async () => {}));
+      expect(err.message).to.equal('Use memoize() instead');
+    });
   });
 });
