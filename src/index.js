@@ -27,7 +27,9 @@ class LRUe extends LRU {
   memoizeSync(key, valueFn) {
     assert(typeof valueFn === 'function');
     if (!this.has(key)) {
-      this.set(key, valueFn());
+      const r = valueFn();
+      assert(!(r instanceof Promise), 'Use memoize() instead');
+      this.set(key, r);
     }
     const r = this.peek(key);
     if (r === null && this.cacheNull !== true) {
