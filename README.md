@@ -28,7 +28,7 @@ Please refer to [lru-cache](https://www.npmjs.com/package/lru-cache).
 Type: `boolean`<br>
 Default: `true`
 
-When set to other than `true`, the `null` value is not cached with `memoize` and `memoizeAsync`.
+When set to other than `true`, the `null` value is not cached with `memoize` and `memoizeSync`.
 
 ## Additional Functions
 
