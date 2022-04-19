@@ -1,7 +1,7 @@
-const assert = require('assert');
-const LRU = require('lru-cache');
+import assert from 'assert';
+import LRU from 'lru-cache';
 
-class LRUe extends LRU {
+export default class LRUe extends LRU {
   constructor({ cacheNull = true, ...options }) {
     super(options);
     this.cacheNull = cacheNull;
@@ -38,5 +38,3 @@ class LRUe extends LRU {
     return r;
   }
 }
-
-module.exports = LRUe;
