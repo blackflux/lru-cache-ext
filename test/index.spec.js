@@ -1,7 +1,7 @@
-const crypto = require('crypto');
-const expect = require('chai').expect;
-const { describe } = require('node-tdd');
-const LRU = require('../src/index');
+import crypto from 'crypto';
+import { expect } from 'chai';
+import { describe } from 'node-tdd';
+import LRU from '../src/index.js';
 
 describe('Testing LRUe', () => {
   let error;
