@@ -15,11 +15,11 @@ export default class LRUe extends LRU {
     try {
       const r = await this.peek(key);
       if (r === null && this.cacheNull !== true) {
-        this.del(key);
+        this.delete(key);
       }
       return r;
     } catch (error) {
-      this.del(key);
+      this.delete(key);
       throw error;
     }
   }
@@ -33,7 +33,7 @@ export default class LRUe extends LRU {
     }
     const r = this.peek(key);
     if (r === null && this.cacheNull !== true) {
-      this.del(key);
+      this.delete(key);
     }
     return r;
   }
