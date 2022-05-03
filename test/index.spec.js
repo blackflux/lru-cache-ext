@@ -27,8 +27,8 @@ describe('Testing LRUe', () => {
   let cache;
   let cacheNoNull;
   beforeEach(() => {
-    cache = new LRU({ maxAge: 5 * 60 * 1000 });
-    cacheNoNull = new LRU({ maxAge: 5 * 60 * 1000, cacheNull: false });
+    cache = new LRU({ max: 10000, ttl: 5 * 60 * 1000 });
+    cacheNoNull = new LRU({ max: 10000, ttl: 5 * 60 * 1000, cacheNull: false });
   });
 
   describe('Testing memoize', () => {
