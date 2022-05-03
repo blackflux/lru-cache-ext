@@ -3,10 +3,7 @@ import LRU from 'lru-cache';
 
 export default class LRUe extends LRU {
   constructor({ cacheNull = true, ...options }) {
-    super({
-      max: 10000,
-      ...options
-    });
+    super(options);
     assert(!('maxAge' in options), 'Please use "ttl" instead of "maxAge"');
     assert('max' in options, 'Please add a "max" value');
     this.cacheNull = cacheNull;
