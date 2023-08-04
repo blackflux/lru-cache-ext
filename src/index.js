@@ -1,5 +1,5 @@
 import assert from 'assert';
-import LRU from 'lru-cache';
+import { LRUCache as LRU } from 'lru-cache';
 
 export default class LRUe extends LRU {
   constructor({ cacheNull = true, ...options }) {

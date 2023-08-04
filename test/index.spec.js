@@ -40,13 +40,10 @@ describe('Testing LRUe', () => {
       expect(cache.peek(key)).to.equal(value);
     });
 
-    it('Testing async error re-empties cache', async () => {
+    it('Testing async error re-empties cache', async ({ capture }) => {
       expect(cache.peek(key)).to.equal(undefined);
-      try {
-        await cache.memoize(key, valueFnError);
-      } catch (e) {
-        expect(e).to.equal(error);
-      }
+      const e = await capture(() => cache.memoize(key, valueFnError));
+      expect(e).to.equal(error);
       expect(cache.peek(key)).to.equal(undefined);
     });
 
