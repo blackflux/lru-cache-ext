@@ -32,7 +32,7 @@ When set to other than `true`, the `null` value is not cached with `memoize` and
 
 ## Additional Functions
 
-### memoize(key: String, valueFn: function)
+### memoize(key: String, valueFn: function, ...args)
 
 Only when the key is not present in cache (or has expired), `valueFn` is called and placed into cache.
 
@@ -42,7 +42,7 @@ The cache is left empty if an error is thrown at any point in `valueFn` (even as
 
 Useful when multiple async operation need to access the same async information.
 
-### memoizeSync(key: String, valueFn: function)
+### memoizeSync(key: String, valueFn: function, ...args)
 
 Similar to "memoize", when key is not present (or has expired), `valueFn` is called and placed into the cache.
 
