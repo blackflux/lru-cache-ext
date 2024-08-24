@@ -12,7 +12,7 @@ export default class LRUe extends LRU {
   async memoize(key, valueFn, ...args) {
     assert(typeof valueFn === 'function');
     if (!this.has(key)) {
-      this.set(key, valueFn(args));
+      this.set(key, valueFn(...args));
     }
     try {
       const r = await this.peek(key);
@@ -29,7 +29,7 @@ export default class LRUe extends LRU {
   memoizeSync(key, valueFn, ...args) {
     assert(typeof valueFn === 'function');
     if (!this.has(key)) {
-      const r = valueFn(args);
+      const r = valueFn(...args);
       assert(!(r instanceof Promise), 'Use memoize() instead');
       this.set(key, r);
     }
